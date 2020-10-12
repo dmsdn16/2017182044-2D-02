@@ -28,7 +28,12 @@
 
  ## 게임흐름
          - 카운트 다운이 0읻되기 전까지 도착지점에 도달해야 한다
-         
+![map](https://user-images.githubusercontent.com/32299218/95701110-aac1aa80-0c83-11eb-9024-965ae724b114.png)
+
+          - 다음은 각각 장애물을 격파하는 장면, 이동시키는 장면, 실패하는 장면입니다
+ ![장애물 격파](https://user-images.githubusercontent.com/32299218/95701164-cd53c380-0c83-11eb-9bbd-6721fe02e7ea.jpg)
+ ![장애물 이동](https://user-images.githubusercontent.com/32299218/95701186-d80e5880-0c83-11eb-9d78-10ac4a7b6c17.jpg)
+ ![실패](https://user-images.githubusercontent.com/32299218/95701207-e492b100-0c83-11eb-9437-7e9338e4e7e8.jpg)
 ## 필요한 기술
        - 다른 과목에서 배운 기술 : 사운드 관리 , 객체지향
        - 현 과목에서 배운 기술 ; 프레임 관리, 이미지 관리 , 키보드 입력 관리
