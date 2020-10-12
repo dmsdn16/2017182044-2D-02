@@ -12,7 +12,7 @@
                   4초 동안 표시되며, 그 후 메인 화면으로 이동된다
   
          - 메인 화면 : new game, load game, option, manuel 선택창을 표시
-         ![헬 테이커2](https://user-images.githubusercontent.com/32299218/95701431-86b29900-0c84-11eb-94a9-f4a3ee8b17e0.png)
+![헬 테이커2](https://user-images.githubusercontent.com/32299218/95701431-86b29900-0c84-11eb-94a9-f4a3ee8b17e0.png)
 
   
          - 옵션 : 사운드를 관리하는 scene
