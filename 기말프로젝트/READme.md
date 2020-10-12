@@ -31,6 +31,7 @@
        마우스 관리
 ## 개발범위
      
+![스크린샷(264)](https://user-images.githubusercontent.com/32299218/95700875-0a6b8600-0c83-11eb-89cb-0d7397b85bcd.png)
 
 
          
