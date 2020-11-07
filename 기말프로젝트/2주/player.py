@@ -3,6 +3,7 @@ import gfw_image
 from gobj import *
 import helper
 
+
 class Player:
      KEY_MAP = {
         (SDL_KEYDOWN, SDLK_LEFT):  (-1,  0),
@@ -17,16 +18,58 @@ class Player:
      KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
      image = None
 
-     def __Init__(self):
-         self.pos = get_canvas_width()//2 ,get_canvas_height()//2
-
-         if image==None:
+     def __init__(self):
+       self.pos = 550,500
+       self.delta = 0,0
+       self.target = None
+       self.targets = []
+       if Player.image == None:
             Player.image = gfw_image.load(RES_DIR + '/character.png')
 
-       
      def draw(self):
-        Player.image = gfw_image.load(RES_DIR + '/character.png')
-        self.image.draw(550,500)
+        sx,sy = self.pos
+        self.image.draw(sx,sy)
+
+     def update(self):
+       x,y = self.pos
+       dx,dy = self.delta
+       self.pos = x+dx, y+dy
+
+       if self.target is not None:
+            ddx = -self.delta[0]
+            helper.move_toward_obj(self)
+            if self.target == None:
+                print("Removing target: ", self.targets[0], " from %d target(s)." % len(self.targets))
+                del self.targets[0]
+                if len(self.targets) > 0:
+                    helper.set_target(self, self.targets[0])
+                  
+       
+     
+     def updateDelta(self, ddx, ddy):
+        dx,dy = self.delta
+        dx += ddx * 10
+        dy += ddy * 10
+        self.delta = dx, dy
+     
+    
+     
+     def handle_event(self, e):
+       
+        pair = (e.type, e.key)
+        if pair in Player.KEY_MAP:
+            if self.target is not None:
+                if e.type == SDL_KEYUP: return
+                self.target = None
+                self.delta = 0,0
+                self.targets = []
+                self.speed = 0
+            self.updateDelta(*Player.KEY_MAP[pair])
+           
+         
+
+
+    
 
 
    
