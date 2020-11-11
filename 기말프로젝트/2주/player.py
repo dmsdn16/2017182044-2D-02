@@ -20,15 +20,18 @@ class Player:
 
      def __init__(self):
        self.pos = 550,500
+       self.action = 3
+       self.fidx = 1
        self.delta = 0,0
        self.target = None
        self.targets = []
        if Player.image == None:
-            Player.image = gfw_image.load(RES_DIR + '/character.png')
+            Player.image = gfw_image.load(RES_DIR + '/run_animation.png')
 
      def draw(self):
-        sx,sy = self.pos
-        self.image.draw(sx,sy)
+        sx = self.fidx * 100
+        sy = self. action * 0
+        self.image.clip_draw(sx, sy,100,100, *self.pos)
 
      def update(self):
        x,y = self.pos
@@ -43,6 +46,12 @@ class Player:
                 del self.targets[0]
                 if len(self.targets) > 0:
                     helper.set_target(self, self.targets[0])
+
+     def updateAction(self, dx, ddx):
+        self.action = \
+            0 if dx < 0 else \
+            1 if dx > 0 else \
+            2 if ddx > 0 else 3
                   
        
      
@@ -51,6 +60,23 @@ class Player:
         dx += ddx * 10
         dy += ddy * 10
         self.delta = dx, dy
+        if ddx != 0:
+            self.updateAction(dx,ddx)
+        self.delta = dx, dy
+        
+     def appendTarget(self, target):
+        if target == self.pos: return
+        for t in self.targets:
+            if t == target: return
+
+        # helper.set_target(self, target)
+
+        self.targets.append(target)
+        self.speed += 1
+        print('speed =', self.speed, 'to', self.targets[0], 'adding target:', target)
+        helper.set_target(self, self.targets[0])
+        self.updateAction(self.delta[0],0)
+       
      
     
      
@@ -65,6 +91,10 @@ class Player:
                 self.targets = []
                 self.speed = 0
             self.updateDelta(*Player.KEY_MAP[pair])
+
+   
+         
+   
            
          
 
