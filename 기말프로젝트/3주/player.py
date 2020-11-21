@@ -2,6 +2,8 @@ from pico2d import *
 import gfw_image
 from gobj import *
 import helper
+from time import sleep
+
 
 
 class Player:
@@ -19,7 +21,7 @@ class Player:
      image = None
 
      def __init__(self):
-       self.pos = 550,500
+       self.pos = 530,490
        self.action = 3
        self.fidx = 5
        self.delta = 0,0
@@ -29,16 +31,16 @@ class Player:
             Player.image = gfw_image.load(RES_DIR + '/run_animation.png')
 
      def draw(self):
-        sx = self.fidx * 100
+        sx = self.fidx * 0
         sy = self. action * 0
-        self.image.clip_draw(sx, sy,100,100, *self.pos)
+        self.image.clip_draw(500, sy,100,100, *self.pos)
 
      def update(self):
        x,y = self.pos
        dx,dy = self.delta
        self.pos = x+dx, y+dy
        self.fidx = (self.fidx + 1) % 8
-
+       
        if self.target is not None:
             ddx = -self.delta[0]
             helper.move_toward_obj(self)
@@ -53,10 +55,9 @@ class Player:
    
      def updateDelta(self, ddx, ddy):
         dx,dy = self.delta
-        dx += ddx * 10
-        dy += ddy * 10
+        dx += ddx * 70
+        dy += ddy * 70
         self.delta = dx, dy
-       
         self.delta = dx, dy
         
      
@@ -64,6 +65,7 @@ class Player:
        
         pair = (e.type, e.key)
         if pair in Player.KEY_MAP:
+             
             if self.target is not None:
                 if e.type == SDL_KEYUP: return
                 self.target = None
@@ -72,6 +74,9 @@ class Player:
                 self.speed = 0
             self.updateDelta(*Player.KEY_MAP[pair])
 
+              
+           
+            
    
          
    

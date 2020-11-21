@@ -2,41 +2,40 @@ import gfw
 from pico2d import *
 from gobj import *
 from player import Player
+import time
+#from skell import Skell
+#from stone import Stone
 
 def enter():
-    global map
+    global map,player,skell,stone
     map = Map()
-
-    global player
     player = Player()
+    #skell = Skell()
+    #stone = Stone()
+    
     
     
   
 def update():
-  player.update()
+   player.update()
+   
+
   
  
-
-
 def draw():
    map.draw()
    player.draw()
    
-   
-  
-   
-
 def handle_event(e):
     global player
     if e.type == SDL_QUIT:
         gfw.quit()
-    elif e.type == SDL_KEYDOWN:
+    if e.type == SDL_KEYDOWN:
+        time.sleep(1)
         if e.key == SDLK_ESCAPE:
             gfw.pop()
     player.handle_event(e)
     
-
-
 
 def exit():
     pass
