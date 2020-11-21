@@ -49,25 +49,14 @@ class Player:
                     helper.set_target(self, self.targets[0])
                 else:
                     self.speed = 0
-                    self.updateAction(0, ddx)
-        
                     
-
-     def updateAction(self, dx, ddx):
-        self.action = \
-            0 if dx < 0 else \
-            1 if dx > 0 else \
-            2 if ddx > 0 else 3
-                  
-       
-     
+   
      def updateDelta(self, ddx, ddy):
         dx,dy = self.delta
         dx += ddx * 10
         dy += ddy * 10
         self.delta = dx, dy
-        if ddx != 0:
-            self.updateAction(dx,ddx)
+       
         self.delta = dx, dy
         
      
@@ -77,7 +66,6 @@ class Player:
         if pair in Player.KEY_MAP:
             if self.target is not None:
                 if e.type == SDL_KEYUP: return
-                self.updateAction(0, -self.delta[0])
                 self.target = None
                 self.delta = 0,0
                 self.targets = []
