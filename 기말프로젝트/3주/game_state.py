@@ -24,7 +24,7 @@ def update():
  
 def draw():
    map.draw()
-  # player.draw()
+   player.draw()
    skell.draw()
    
 def handle_event(e):

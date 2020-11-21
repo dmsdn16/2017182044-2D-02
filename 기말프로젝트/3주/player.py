@@ -21,19 +21,19 @@ class Player:
      image = None
 
      def __init__(self):
-       self.pos = 530,490
+       self.pos = 520,480
        self.action = 3
        self.fidx = 5
        self.delta = 0,0
        self.target = None
        self.targets = []
        if Player.image == None:
-            Player.image = gfw_image.load(RES_DIR + '/run_animation.png')
+            Player.image = gfw_image.load(RES_DIR + '/Hero(R).png')
 
      def draw(self):
-        sx = self.fidx * 0
+        sx = self.fidx * 100
         sy = self. action * 0
-        self.image.clip_draw(500, sy,100,100, *self.pos)
+        self.image.clip_draw(sx,827,100,100, *self.pos,75,75)
 
      def update(self):
        x,y = self.pos
