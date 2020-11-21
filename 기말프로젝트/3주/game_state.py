@@ -3,14 +3,14 @@ from pico2d import *
 from gobj import *
 from player import Player
 import time
-#from skell import Skell
+from skell import Skell
 #from stone import Stone
 
 def enter():
     global map,player,skell,stone
     map = Map()
     player = Player()
-    #skell = Skell()
+    skell = Skell()
     #stone = Stone()
     
     
@@ -24,7 +24,8 @@ def update():
  
 def draw():
    map.draw()
-   player.draw()
+  # player.draw()
+   skell.draw()
    
 def handle_event(e):
     global player
