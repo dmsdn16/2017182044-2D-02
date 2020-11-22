@@ -1,8 +1,8 @@
 from pico2d import *
-import gfw_image
 from gobj import *
 import helper
 from time import sleep
+import gfw
 
 
 
@@ -27,8 +27,11 @@ class Player:
        self.delta = 0,0
        self.target = None
        self.targets = []
+       
+       
        if Player.image == None:
-            Player.image = gfw_image.load(RES_DIR + '/Hero(R).png')
+            Player.image = gfw.image.load(RES_DIR + '/Hero(R).png')
+       self.radius = self.image.w //2
 
      def draw(self):
         sx = self.fidx * 100
@@ -51,12 +54,16 @@ class Player:
                     helper.set_target(self, self.targets[0])
                 else:
                     self.speed = 0
-                    
+     
+     def get_bb(self):
+         x,y = self.pos
+         return x - 50, y - 50 , x + 50, y + 50 
+
    
      def updateDelta(self, ddx, ddy):
         dx,dy = self.delta
-        dx += ddx * 70
-        dy += ddy * 70
+        dx += ddx * 10
+        dy += ddy * 10
         self.delta = dx, dy
         self.delta = dx, dy
         

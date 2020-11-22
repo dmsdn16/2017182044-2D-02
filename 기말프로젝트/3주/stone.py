@@ -1,5 +1,5 @@
 from pico2d import *
-import gfw_image
+import gfw
 from gobj import *
 import helper
 
@@ -14,7 +14,7 @@ class Stone:
       self.target = None
       self.targets = []
       if Stone.image == None:
-            Stone.image = gfw_image.load(RES_DIR + '/stone.png')
+            Stone.image = gfw.image.load(RES_DIR + '/stone.png')
 
     def draw(self):
         self.image.clip_draw(0, 0,100,100, *self.pos1,75,75)
