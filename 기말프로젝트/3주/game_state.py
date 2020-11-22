@@ -4,14 +4,14 @@ from gobj import *
 from player import Player
 import time
 from skell import Skell
-#from stone import Stone
+from stone import Stone
 
 def enter():
     global map,player,skell,stone
     map = Map()
     player = Player()
     skell = Skell()
-    #stone = Stone()
+    stone = Stone()
     
     
     
@@ -26,6 +26,7 @@ def draw():
    map.draw()
    player.draw()
    skell.draw()
+   stone.draw()
    
 def handle_event(e):
     global player
