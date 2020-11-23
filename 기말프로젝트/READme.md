@@ -53,9 +53,9 @@
 ![스크린샷(265)](https://user-images.githubusercontent.com/32299218/95700954-3dae1500-0c83-11eb-98f4-51fa1e667971.png)
 
 ## 현재까지 진행상황
-![인사이트](https://user-images.githubusercontent.com/32299218/99945804-a62afe80-2db8-11eb-8a9b-4f44cca2dd6e.png)
-## commit insight
 
+## commit insight
+![인사이트](https://user-images.githubusercontent.com/32299218/99945804-a62afe80-2db8-11eb-8a9b-4f44cca2dd6e.png)
 ## 중요 class
          -1. player(플레이어, 키보드를 사용하여 이동)
          -2. skell(플레이어에 의해 이동되면서 파괴가능한 오브젝트)
