@@ -51,7 +51,7 @@ def handle_event(e):
     if e.type == SDL_QUIT:
         gfw.quit()
     if e.type == SDL_KEYDOWN:
-        #time.sleep(1)
+        time.sleep(0.5)
         if e.key == SDLK_ESCAPE:
             gfw.pop()
     player.handle_event(e)

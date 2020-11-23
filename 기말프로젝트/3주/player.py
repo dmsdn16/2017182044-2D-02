@@ -21,7 +21,7 @@ class Player:
      image = None
 
      def __init__(self):
-       self.pos = 520,480
+       self.pos = 520,450
        self.action = 3
        self.fidx = 5
        self.delta = 0,0
@@ -62,8 +62,8 @@ class Player:
    
      def updateDelta(self, ddx, ddy):
         dx,dy = self.delta
-        dx += ddx * 10
-        dy += ddy * 10
+        dx += ddx * 60
+        dy += ddy * 60
         self.delta = dx, dy
         self.delta = dx, dy
         
