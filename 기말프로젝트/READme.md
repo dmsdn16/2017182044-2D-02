@@ -52,6 +52,24 @@
 ## 개발일정
 ![스크린샷(265)](https://user-images.githubusercontent.com/32299218/95700954-3dae1500-0c83-11eb-98f4-51fa1e667971.png)
 
+## 현재까지 진행상황
+![스크린샷(48)](https://user-images.githubusercontent.com/32299218/99945990-f6a25c00-2db8-11eb-8f86-ba4a93d7ef57.png)
+
+## commit insight
+![인사이트](https://user-images.githubusercontent.com/32299218/99945804-a62afe80-2db8-11eb-8a9b-4f44cca2dd6e.png)
+## 중요 class
+         -1. player(플레이어, 키보드를 사용하여 이동)
+         -2. skell(플레이어에 의해 이동되면서 파괴가능한 오브젝트)
+         -3.stone(플레이어에 의해이동은 되나 파괴불능 오브젝트)
+         
+## 클래스간의 상호작용
+         -1.player와 skell은 충돌 시 skell이 이동됩니다. skell이 이동불가능한 상태일 경우 skell은 파괴됩니다
+
+         -2.player와 stone은 충돌 시 stone이 이동됩니다. stone은 이동불가 상태가 되어도 파괴되지 않습니다.
+## 핵심코드
+         - 충돌 시 방향성 입력받기 (현재 미구현 상태라 충돌 체크만 하고 있습니다)
+
+
 
 
          
