@@ -53,6 +53,7 @@
 ![스크린샷(265)](https://user-images.githubusercontent.com/32299218/95700954-3dae1500-0c83-11eb-98f4-51fa1e667971.png)
 
 ## 현재까지 진행상황
+![스크린샷(48)](https://user-images.githubusercontent.com/32299218/99945990-f6a25c00-2db8-11eb-8f86-ba4a93d7ef57.png)
 
 ## commit insight
 ![인사이트](https://user-images.githubusercontent.com/32299218/99945804-a62afe80-2db8-11eb-8a9b-4f44cca2dd6e.png)
