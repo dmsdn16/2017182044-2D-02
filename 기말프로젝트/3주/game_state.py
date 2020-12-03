@@ -37,6 +37,7 @@ def collision(a,b):
   
 def update():
    player.update()
+   skell.update()
    
   
  

@@ -27,7 +27,7 @@ class Player:
        self.delta = 0,0
        self.target = None
        self.targets = []
-       
+       self.time =0
        
        if Player.image == None:
             Player.image = gfw.image.load(RES_DIR + '/Hero(R).png')
@@ -42,7 +42,9 @@ class Player:
        x,y = self.pos
        dx,dy = self.delta
        self.pos = x+dx, y+dy
-       self.fidx = (self.fidx + 1) % 8
+       self.time += gfw.delta_time
+       frame = self.time * 12
+       self.fidx =int(frame) % 12
        
        if self.target is not None:
             ddx = -self.delta[0]
