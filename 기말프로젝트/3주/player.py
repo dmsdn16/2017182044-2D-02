@@ -63,7 +63,7 @@ class Player:
                 self.pos =x,y
             elif(self.action ==4 and x == unx1 and y - 60 == uny1): # 아래
                 self.pos =x,y
-            print(x,y)
+            
        
        if self.target is not None:
             ddx = -self.delta[0]
@@ -79,7 +79,7 @@ class Player:
      
      def get_bb(self):
          x,y = self.pos
-         return x1 - 50, y1 - 50 , x1 + 50, y1 + 50 
+         return x-10,y-10,x+10,y+10 
 
    
      def updateDelta(self, ddx, ddy):
@@ -97,14 +97,14 @@ class Player:
             0 if dx < 0 else \
             1 if dx > 0 else \
             2 if ddx > 0 else 3
-        print(self.action)
+        
 
      def updateActionY(self,dy,ddy):
         self.action = \
             4 if dy < 0 else \
             5 if dy >0 else \
             6 if ddy > 0 else 7
-        print(self.action)
+       
      
      def handle_event(self, e):
        
@@ -118,7 +118,26 @@ class Player:
                 self.targets = []
                 self.speed = 0
             self.updateDelta(*Player.KEY_MAP[pair])
+    
+     def ReturnAction(self):
+         act = self.action
+         return act
 
+     def Lcollision(self):
+         x,y = self.pos
+         self.pos = x+60, y
+    
+     def Rcollision(self):
+         x,y = self.pos
+         self.pos = x-60, y
+
+     def Ucollision(self):
+         x,y = self.pos
+         self.pos = x, y -60
+
+     def Dcollision(self):
+         x,y = self.pos
+         self.pos = x, y +60
               
            
             
