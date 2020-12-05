@@ -4,7 +4,7 @@ from gobj import *
 from player import Player
 import time
 from skell import *
-from stone import Stone
+from stone import *
 
 
 CountDown_Color = (255,255,255)
@@ -12,12 +12,13 @@ CountDown_Color = (255,255,255)
 
 def enter():
    
-    global map,player,skell,stone,skell2
+    global map,player,skell,stone,skell2,stone2
     map = Map()
     player = Player()
     skell = Skell()
     skell2 = Skell2()
     stone = Stone()
+    stone2 = Stone2()
     gfw.world.init(['bg','skell','player','stone'])
     gfw.world.add(gfw.layer.player,player)
     gfw.world.add(gfw.layer.skell,skell)
@@ -48,6 +49,11 @@ def check_collision():
 
             elif collision(player,skell2):
                 Call(skell2)
+            elif collision(player,stone):
+                Call(stone)
+            elif collision(player,stone2):
+                Call(stone2)
+            #print(player.ReturnAction())
 
                
                  
@@ -65,6 +71,8 @@ def update():
     player.update()
     skell.update()
     skell2.update()
+    stone.update()
+    stone2.update()
     
    
    
@@ -79,6 +87,7 @@ def draw():
    skell.draw()
    skell2.draw()
    stone.draw()
+   stone2.draw()
    font.draw(*Countdown_pos,'%.1d' % Countdown,CountDown_Color)
   # gfw.world.draw()
    
@@ -96,20 +105,20 @@ def handle_event(e):
     player.handle_event(e)
 
 def Call(a):
-     if player.ReturnAction() ==2:
+     if player.ReturnAction() == 2: #좌
         
          a.Lcollision()
          player.Lcollision()
-     if player.ReturnAction() == 3:
+     if player.ReturnAction() == 3:#우
          
          a.Rcollision()
          player.Rcollision()
-     if player.ReturnAction() == 6:
+     if player.ReturnAction() == 6: # 아래
          
          a.Dcollision()
          player.Dcollision()
 
-     if player.ReturnAction() == 7:
+     if player.ReturnAction() == 7: # 위
          
          a.Ucollision()
          player.Ucollision()
