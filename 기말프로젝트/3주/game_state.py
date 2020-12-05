@@ -3,7 +3,7 @@ from pico2d import *
 from gobj import *
 from player import Player
 import time
-from skell import Skell
+from skell import *
 from stone import Stone
 
 
@@ -12,10 +12,11 @@ CountDown_Color = (255,255,255)
 
 def enter():
    
-    global map,player,skell,stone
+    global map,player,skell,stone,skell2
     map = Map()
     player = Player()
     skell = Skell()
+    skell2 = Skell2()
     stone = Stone()
     gfw.world.init(['bg','skell','player','stone'])
     gfw.world.add(gfw.layer.player,player)
@@ -43,21 +44,14 @@ def collision(a,b):
 def check_collision():
          
             if collision(player,skell):
-                if player.ReturnAction() ==2:
-                    skell.Lcollision()
-                    player.Lcollision()
-                if player.ReturnAction() == 3:
-                    skell.Rcollision()
-                    player.Rcollision()
-                if player.ReturnAction() == 6:
-                    skell.Dcollision()
-                    player.Dcollision()
+               Call(skell)
 
-                if player.ReturnAction() == 7:
-                    skell.Ucollision()
-                    player.Ucollision()
+            elif collision(player,skell2):
+                Call(skell2)
+
+               
                  
-            print(player.ReturnAction())
+           
             
           
 
@@ -70,6 +64,7 @@ def update():
  #  gfw.world.update()
     player.update()
     skell.update()
+    skell2.update()
     
    
    
@@ -82,6 +77,7 @@ def draw():
    map.draw()
    player.draw()
    skell.draw()
+   skell2.draw()
    stone.draw()
    font.draw(*Countdown_pos,'%.1d' % Countdown,CountDown_Color)
   # gfw.world.draw()
@@ -99,6 +95,24 @@ def handle_event(e):
         
     player.handle_event(e)
 
+def Call(a):
+     if player.ReturnAction() ==2:
+        
+         a.Lcollision()
+         player.Lcollision()
+     if player.ReturnAction() == 3:
+         
+         a.Rcollision()
+         player.Rcollision()
+     if player.ReturnAction() == 6:
+         
+         a.Dcollision()
+         player.Dcollision()
+
+     if player.ReturnAction() == 7:
+         
+         a.Ucollision()
+         player.Ucollision()
 
 def exit():
     pass
