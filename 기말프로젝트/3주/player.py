@@ -80,6 +80,10 @@ class Player:
      def get_bb(self):
          x,y = self.pos
          return x-10,y-10,x+10,y+10 
+     
+     def clear_check(self):
+         x,y = self.pos
+         return x,y
 
    
      def updateDelta(self, ddx, ddy):

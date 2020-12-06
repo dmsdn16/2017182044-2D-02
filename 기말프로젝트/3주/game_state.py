@@ -8,6 +8,7 @@ from stone import *
 
 
 CountDown_Color = (255,255,255)
+STATE_IN_GAME,STATE_GAME_OVER,CLEAR = range(3)
  
 
 def enter():
@@ -23,8 +24,16 @@ def enter():
     gfw.world.add(gfw.layer.player,player)
     gfw.world.add(gfw.layer.skell,skell)
     
-    global Countdown
-    Countdown = 20
+    global Countdown,state
+    Countdown = 19
+    state = STATE_IN_GAME
+
+    global game_over_image
+    game_over_image = gfw.image.load('res/game over2.png')
+
+    global clear_image,success_image
+    clear_image = gfw.image.load('res/clear.png')
+    success_image = gfw.image.load('res/success.png')
     
     global font
     font = gfw.font.load('res/ConsolaMalgun.ttf', 100)
@@ -55,17 +64,28 @@ def check_collision():
                 Call(stone2)
             #print(player.ReturnAction())
 
-               
-                 
-           
-            
-          
+def end_game():
+    global state
+    state = STATE_GAME_OVER
 
+def clear():
+    x,y = player.clear_check()
+    return x,y
 
+def check_clear():
+    global state,Countdown
+    x,y = clear()
+    if Countdown > 0:
+        if x==580 and y == 160:
+            state = CLEAR
+
+        
+
+    
     
   
 def update():
-    global Countdown 
+    global Countdown ,state
     check_collision()
  #  gfw.world.update()
     player.update()
@@ -73,6 +93,14 @@ def update():
     skell2.update()
     stone.update()
     stone2.update()
+    check_clear()
+
+    if Countdown == 0:
+        end_game()
+
+    if state != STATE_IN_GAME:
+        return # 게임 종료 (근데 계속 움직임)
+    
     
    
    
@@ -90,6 +118,14 @@ def draw():
    stone2.draw()
    font.draw(*Countdown_pos,'%.1d' % Countdown,CountDown_Color)
   # gfw.world.draw()
+   if state == STATE_GAME_OVER:
+        # 화면 한 가운데를 중심으로 이미지를 출력한다.
+        x, y = get_canvas_width() // 2, get_canvas_height() // 2
+        game_over_image.draw(x, y)
+   if state == CLEAR:
+       a, b = get_canvas_width() // 2, get_canvas_height() // 2
+       success_image.draw(a,b)
+       clear_image.draw(a,b)
    
 def handle_event(e):
     global player,Countdown
