@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f399f53d-adf5-4f3f-b38e-c67524e8c126</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>starter.py</StartupFile>
+    <StartupFile>game_state.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -43,6 +43,9 @@
     </Compile>
     <Compile Include="starter.py" />
     <Compile Include="stone.py" />
+    <Compile Include="taker.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="title_state.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

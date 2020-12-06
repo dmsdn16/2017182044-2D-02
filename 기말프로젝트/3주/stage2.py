@@ -1,55 +1,60 @@
 import gfw
 from pico2d import *
 from Map import *
+from taker import Taker
+import time
+from skell import *
+from stone import *
 
-time = 1.0
+
+
+CountDown_Color = (255,255,255)
+STATE_IN_GAME,STATE_GAME_OVER,CLEAR = range(3)
+ 
 
 def enter():
-    global image, elapsed
-    image = gfw.image.load('../res/clear.png')
-    elapsed = 0.0
+    gfw.world.init(['skell','taker','stone'])
+    global map,player,skell,stone,skell2,stone2,taker
+    map = SecondMap()
+    taker = Taker()
+    gfw.world.add(gfw.layer.taker,taker)
 
-    global clear,map
-
-    clear = False
    
-    map = Map()
-
+ 
 def update():
-    
-    global elapsed, clear , image
-    elapsed += gfw.delta_time
-    
-    
-    if clear == False:
-        if elapsed >= time:
-            gfw.image.unload('../res/clear.png')
-            
-            clear = True
-
-    
-            
-
+    gfw.world.update()
+   
+  
+ 
 def draw():
-    
-    global clear
-    image.clip_draw_to_origin(0, 0, image.w, image.h, 0, 0, get_canvas_width() , get_canvas_height())
+   map.draw()
+   taker.draw()
+   
 
-    if clear == True:
-        map.draw()
+   
+ 
+   
 def handle_event(e):
+    global taker
     if e.type == SDL_QUIT:
         gfw.quit()
-    elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
-        gfw.quit()
-def exit():
-    global image
-    del image
+    elif e.type == SDL_KEYDOWN:
+        time.sleep(0.5)
+        
+        if e.key == SDLK_ESCAPE:
+            gfw.pop()
+    taker.handle_events(e)
+        
+   
 
+
+
+def exit():
+    pass
 def pause():
     pass
 def resume():
     pass
-    
+
 if __name__ == '__main__':
-     gfw.run_main()
+    gfw.run_main()

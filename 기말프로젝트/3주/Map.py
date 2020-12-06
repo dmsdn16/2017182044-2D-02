@@ -1,7 +1,7 @@
 from pico2d import *
 import gfw
 
-class Map:
+class SecondMap:
     def __init__(self):
         #self.image = load_image(RES_DIR + '/basic map.png')
         self.image = gfw.image.load('res/New mapping.png')

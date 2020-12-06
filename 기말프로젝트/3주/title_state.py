@@ -2,6 +2,7 @@ import gfw
 from pico2d import *
 import game_state
 import manual
+import stage2
 
 def enter():
     global image, count
@@ -28,7 +29,9 @@ def handle_event(e):
         gfw.quit()
     elif (e.type, e.key) == (SDL_KEYDOWN, SDLK_SPACE):
         if count == 0:
-            gfw.push(game_state)
+            
+           gfw.push(game_state)
+
         elif count == 1:
             gfw.push(manual)
         elif count == 2:

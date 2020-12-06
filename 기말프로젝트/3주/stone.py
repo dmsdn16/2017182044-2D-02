@@ -35,7 +35,7 @@ class Stone:
       #  frame = self.time * 12
       #  self.fidx =int(frame) % 12
         x,y = self.pos1
-        
+        print(self.pos1)
 
         for i in range(33):
             unx1 , uny1 = map1[i] 
@@ -61,7 +61,7 @@ class Stone:
        
         x,y = self.pos1
         self.pos1 = x-45,y
-        
+        print(self.pos1)
     def Rcollision(self):
         x,y = self.pos1
         self.pos1 = x+45,y
@@ -116,7 +116,7 @@ class Stone2:
     
     def get_bb(self):
         x,y = self.pos2
-        return x-10, y-10, x+10, y+10
+        return x-5, y-5, x+5, y+5
    
 
 

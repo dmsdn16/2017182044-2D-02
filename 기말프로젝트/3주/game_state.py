@@ -13,17 +13,20 @@ STATE_IN_GAME,STATE_GAME_OVER,CLEAR = range(3)
  
 
 def enter():
-   
+    gfw.world.init(['skell','player','stone'])
     global map,player,skell,stone,skell2,stone2
     map = Map()
     player = Player()
-    skell = Skell()
-    skell2 = Skell2()
-    stone = Stone()
-    stone2 = Stone2()
-    gfw.world.init(['bg','skell','player','stone'])
     gfw.world.add(gfw.layer.player,player)
+    skell = Skell()
     gfw.world.add(gfw.layer.skell,skell)
+    skell2 = Skell2()
+    gfw.world.add(gfw.layer.skell,skell2)
+    stone = Stone()
+    gfw.world.add(gfw.layer.stone,stone)
+    stone2 = Stone2()
+    gfw.world.add(gfw.layer.stone,stone2)
+
     
     global Countdown,state
     Countdown = 19
@@ -44,27 +47,38 @@ def collision(a,b):
 
         left_a,bottom_a,right_a,top_a = a.get_bb()
         left_b,bottom_b,right_b,top_b = b.get_bb()
-        if left_a> right_b  : return False
-        if right_a < left_b : return False
-        if top_a < bottom_b : return False
-        if bottom_a > top_b : return False
-
-        return True
+       
+        if right_a < left_b or left_a > right_b or top_b < bottom_a or bottom_b > top_a:
+            return False
+        else:
+            return True
 
     
 def check_collision():
          
             if collision(player,skell):
                Call(skell)
-
+              
             elif collision(player,skell2):
                 Call(skell2)
+                
             elif collision(player,stone):
                 Call(stone)
+              
             elif collision(player,stone2):
                 Call(stone2)
+            elif collision(stone,skell):
+                gfw.world.remove(skell)
+            elif collision(stone2,skell):
+                gfw.world.remove(skell) 
+            elif collision(stone,skell2):
+                gfw.world.remove(skell2)
+            elif collision(stone2,skell2):
+                gfw.world.remove(skell2)
+            #print(collision(player,stone))
+           
             #print(player.ReturnAction())
-
+           
 def end_game():
     global state
     state = STATE_GAME_OVER
@@ -87,14 +101,9 @@ def check_clear():
     
   
 def update():
-    global Countdown ,state
+    global Countdown ,state, C
     check_collision()
- #  gfw.world.update()
-    player.update()
-    skell.update()
-    skell2.update()
-    stone.update()
-    stone2.update()
+    gfw.world.update()
     check_clear()
 
     if Countdown == 0:
@@ -103,7 +112,8 @@ def update():
         gfw.pop()
 
     
-    elif state == CLEAR:
+    elif state == CLEAR: 
+        
         gfw.change(stage2)
     
     
@@ -116,11 +126,7 @@ def draw():
   
   # font.draw(*score_pos, 'Score : %.1f' % score, SCORE_TEXT_COLOR)
    map.draw()
-   player.draw()
-   skell.draw()
-   skell2.draw()
-   stone.draw()
-   stone2.draw()
+   
    if Countdown >=10:
        font.draw(*Countdown_pos,'%.1d' % Countdown,CountDown_Color)
    elif Countdown < 10:
@@ -128,7 +134,7 @@ def draw():
 
 
    
-  # gfw.world.draw()
+   gfw.world.draw()
    if state == STATE_GAME_OVER:
         # 화면 한 가운데를 중심으로 이미지를 출력한다.
         x, y = get_canvas_width() // 2, get_canvas_height() // 2
@@ -137,34 +143,37 @@ def draw():
   
    
 def handle_event(e):
-    global player,Countdown
+    global player,Countdown,state
     if e.type == SDL_QUIT:
         gfw.quit()
     if e.type == SDL_KEYDOWN:
-        time.sleep(0.5)
-        Countdown -=1
+        a,b = player.Returnamount()
+        if a== 0 and b == 0:
+            Countdown -= 1
+        
         if e.key == SDLK_ESCAPE:
             gfw.pop()
+    if state != CLEAR:
+        player.handle_event(e)
+
     
-        
-    player.handle_event(e)
 
 def Call(a):
-     if player.ReturnAction() == 2: #좌
-        
+    global player
+    x,y = player.ReturnAction()
+    print(y)
+    if x > 0 and y == 0: # 좌
          a.Lcollision()
          player.Lcollision()
-     if player.ReturnAction() == 3:#우
-         
+       
+    if x < 0 and y == 0:#우
          a.Rcollision()
          player.Rcollision()
-     if player.ReturnAction() == 6: # 아래
-         
+    if x ==  0 and y > 0: # 아래
          a.Dcollision()
          player.Dcollision()
 
-     if player.ReturnAction() == 7: # 위
-         
+    if x == 0 and y < 0: # 위
          a.Ucollision()
          player.Ucollision()
 

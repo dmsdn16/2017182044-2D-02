@@ -7,7 +7,7 @@ import gfw
 
 
 
-class Player:
+class Taker:
      KEY_MAP = {
         (SDL_KEYDOWN, SDLK_LEFT):  (-1,  0),
         (SDL_KEYDOWN, SDLK_RIGHT): ( 1,  0),
@@ -22,18 +22,16 @@ class Player:
      image = None
 
      def __init__(self):
-       self.pos = 490,450 # 550 420(map2), 160 150(last map)
+       self.pos = 490,175 # 550 420(map2), 160 150(last map)
        self.action = 3
        self.fidx = 5
        self.delta = 0,0
        self.target = None
        self.targets = []
        self.time =0
-       self.x_amount = 0
-       self.y_amount = 0
        
-       if Player.image == None:
-            Player.image = gfw.image.load(RES_DIR + '/Hero(R).png')
+       if Taker.image == None:
+            Taker.image = gfw.image.load(RES_DIR + '/Hero(R).png')
        self.radius = self.image.w //2
 
      def draw(self):
@@ -51,28 +49,11 @@ class Player:
                (220,175),(580,175),\
                (220,120),(265,120),(310,120),(35,120),(400,120),(445,120),(490,120),(535,120),\
                (445,505),(490,505))
-       print(self.pos)
+
        x,y = self.pos
        dx,dy = self.delta
-       
-       if self.x_amount < 0:
-           self.pos = x + 4.5 , y
-       if self.x_amount > 0:
-           self.pos = x - 4.5 , y
-       if self.y_amount < 0:
-           self.pos = x , y + 5.5
-       if self.y_amount > 0:
-           self.pos = x , y - 5.5
-       if self.x_amount > 0:
-           self.x_amount -= 4.5
-       if self.x_amount < 0:
-           self.x_amount += 4.5
-       if self.y_amount > 0:
-           self.y_amount -= 5.5
-       if self.y_amount < 0:
-           self.y_amount += 5.5
-      
-       #self.pos = x+dx, y+dy
+       print(dx,dy)
+       self.pos = x+dx, y+dy
        self.time += gfw.delta_time
        frame = self.time * 12
        self.fidx =int(frame) % 12
@@ -80,14 +61,14 @@ class Player:
        for i in range(33):
             unx1 , uny1 = map1[i]
             
-            if(self.x_amount < 0 and x +45 == unx1 and y == uny1):# 우
-                self.pos =x - 4.5,y
-            elif(self.x_amount > 0 and x-45 == unx1 and y == uny1): #좌
-                self.pos =x + 4.5,y
-            elif(self.y_amount < 0 and x == unx1 and y + 55 == uny1): # 위
-                self.pos =x, y - 5.5  
-            elif(self.y_amount > 0 and x == unx1 and y - 55 == uny1): # 아래
-                self.pos =x, y + 5.5
+            if(self.action ==1 and x +45 == unx1 and y == uny1):# 우
+                self.pos =x,y
+            elif(self.action ==0 and x-45 == unx1 and y == uny1): #좌
+                self.pos =x,y
+            elif(self.action ==5 and x == unx1 and y + 55 == uny1): # 위
+                self.pos =x,y
+            elif(self.action ==4 and x == unx1 and y - 55 == uny1): # 아래
+                self.pos =x,y
             
        
        if self.target is not None:
@@ -103,23 +84,22 @@ class Player:
                     self.updateAction(0, ddx)
      
      def get_bb(self):
-         
          x,y = self.pos
          return x-10,y-10,x+10,y+10 
      
      def clear_check(self):
          x,y = self.pos
-         
          return x,y
 
    
-     def updateDelta(self,ddx,ddy):
-        dx,dy = 4.5, 5.5
-        
+     def updateDelta(self, ddx, ddy):
+        dx,dy = self.delta
+        dx += ddx * 45
+        dy += ddy * 55
         if ddx != 0:
-           self.updateAction(dx, ddx)
+            self.updateAction(dx, ddx)
         if ddy !=0:
-           self.updateActionY(dy,ddy)
+            self.updateActionY(dy,ddy)
         self.delta = dx, dy
         
      def updateAction(self, dx, ddx):
@@ -127,7 +107,7 @@ class Player:
             0 if dx < 0 else \
             1 if dx > 0 else \
             2 if ddx > 0 else 3
-       
+        
 
      def updateActionY(self,dy,ddy):
         self.action = \
@@ -136,68 +116,38 @@ class Player:
             6 if ddy > 0 else 7
        
      
-     def handle_event(self, e):
+     def handle_events(self, e):
        
-         if self.x_amount == 0 and self.y_amount == 0:
-             if e.type == SDL_KEYDOWN:
-                
-                 if e.key == SDLK_LEFT:
-                     self.x_amount +=45
-                     self.updateDelta(-1,0)
-                 elif e.key == SDLK_RIGHT:
-                     self.x_amount -=45
-                     self.updateDelta(1,0)
-                 elif e.key == SDLK_UP:
-                     self.y_amount -=55
-                     self.updateDelta(0,1)
-                 elif e.key == SDLK_DOWN:
-                     self.y_amount +=55
-                     self.updateDelta(0,-1)
-                
-          
-
+        pair = (e.type, e.key)
+        if pair in Taker.KEY_MAP:
              
-
-               
-        #pair = (e.type, e.key)
-        #if pair in Player.KEY_MAP:
-             
-        #    if self.target is not None:
-        #        if e.type == SDL_KEYUP: return
-        #        self.target = None
-        #        self.delta = 0,0
-        #        self.targets = []
-        #        self.speed = 0
-        #    self.updateDelta(*Player.KEY_MAP[pair])
+            if self.target is not None:
+                if e.type == SDL_KEYUP: return
+                self.target = None
+                self.delta = 0,0
+                self.targets = []
+                self.speed = 0
+            self.updateDelta(*Taker.KEY_MAP[pair])
     
      def ReturnAction(self):
-         x,y = self.x_amount, self.y_amount
-         return x,y
+         act = self.action
+         return act
 
      def Lcollision(self):
-        
          x,y = self.pos
-         self.pos = x + 45 , y
-        
+         self.pos = x+45, y
     
      def Rcollision(self):
          x,y = self.pos
-         self.pos = x - 45, y
+         self.pos = x-45, y
 
      def Ucollision(self):
-         
          x,y = self.pos
          self.pos = x, y -55
-        
 
      def Dcollision(self):
-         
          x,y = self.pos
          self.pos = x, y +55
-
-     def Returnamount(self):
-        x,y = self.x_amount, self.y_amount
-        return x,y
 
    
            
