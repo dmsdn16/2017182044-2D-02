@@ -3,20 +3,50 @@ from pico2d import *
 import title_state
 
 
+time = 1.0
+
 def enter():
     global image, elapsed
-    image = load_image('../res/무녀.png')
-    elapsed = 0
+    image = gfw.image.load('../res/logo1.png')
+    elapsed = 0.0
+
+    global logo1,logo2,logo3
+
+    logo1 = False
+    logo2 = False
+    logo3 = False
 
 def update():
+    
     global elapsed
     elapsed += gfw.delta_time
     print(elapsed)
-    if elapsed > 1.0:
-        gfw.change(title_state)
+    global image,logo1,logo2,logo3
+    
+    if logo1 == False:
+        if elapsed >= time:
+            gfw.image.unload('../res/logo1.png')
+            image = gfw.image.load('../res/logo2.png')
+            elapsed = 0.0
+            logo1 = True
+
+    elif logo2 == False:
+        if elapsed >= time:
+            gfw.image.unload('../res/logo2.png')
+            image = gfw.image.load('../res/logo3.png')
+            elapsed = 0.0
+            logo2 = True
+
+    elif logo3 == False:
+         if elapsed >= time:
+             gfw.image.unload('../res/logo3.png')
+             logo3 = True
+             gfw.change(title_state)
+        
 
 def draw():
-    image.draw(400, 300)
+    
+    image.clip_draw_to_origin(0, 0, image.w, image.h, 0, 0, get_canvas_width() , get_canvas_height())
 
 def handle_event(e):
     if e.type == SDL_QUIT:

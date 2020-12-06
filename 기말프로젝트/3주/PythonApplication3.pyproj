@@ -21,15 +21,26 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="bg.py" />
     <Compile Include="game_state.py" />
     <Compile Include="gfw.py" />
     <Compile Include="gfw_image.py" />
     <Compile Include="gobj.py" />
     <Compile Include="helper.py" />
+    <Compile Include="Last stage.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="logo_state.py" />
+    <Compile Include="manual.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Map.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="player.py" />
     <Compile Include="skell.py" />
+    <Compile Include="stage2.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="starter.py" />
     <Compile Include="stone.py" />
     <Compile Include="title_state.py" />

@@ -22,7 +22,7 @@ class Player:
      image = None
 
      def __init__(self):
-       self.pos = 520,460
+       self.pos = 490,175 # 550 420(map2), 160 150(last map)
        self.action = 3
        self.fidx = 5
        self.delta = 0,0
@@ -37,14 +37,18 @@ class Player:
      def draw(self):
         sx = self.fidx * 100
         sy = self. action * 0
-        self.image.clip_draw(sx,827,100,100, *self.pos,75,75)
+        self.image.clip_draw(sx,827,100,100, *self.pos,50,50)
 
      def update(self):
-       map1 = ((400,460),(340,460),(280,460),(220,400),\
-               (220,340),(160,280),(160,220),(160,160),\
-               (220,100),(280,100),(340,100),(400,100),(460,100),(520,100),(580,100),\
-               (580,460),(580,400),(520,340),(460,520),(520,520),\
-               (340,280),(400,280),(460,280),(520,280),(580,280),(580,220),(640,160))
+       map1 = ((220,450),(265,450),(310,450),(355,450),(400,450),(535,450),\
+               (220,395),(265,395),(535,395),\
+               (220,340),(265,340),(490,340),(535,340),\
+               (220,285),(355,285),(400,285),(445,285),(490,285),(535,285),\
+               (220,230),(535,230),\
+               (220,175),(580,175),\
+               (220,120),(265,120),(310,120),(35,120),(400,120),(445,120),(490,120),(535,120),\
+               (445,505),(490,505))
+
        x,y = self.pos
        dx,dy = self.delta
        self.pos = x+dx, y+dy
@@ -52,16 +56,16 @@ class Player:
        frame = self.time * 12
        self.fidx =int(frame) % 12
 
-       for i in range(27):
+       for i in range(33):
             unx1 , uny1 = map1[i]
             
-            if(self.action ==1 and x +60 == unx1 and y == uny1):# 우
+            if(self.action ==1 and x +45 == unx1 and y == uny1):# 우
                 self.pos =x,y
-            elif(self.action ==0 and x-60 == unx1 and y == uny1): #좌
+            elif(self.action ==0 and x-45 == unx1 and y == uny1): #좌
                 self.pos =x,y
-            elif(self.action ==5 and x == unx1 and y + 60 == uny1): # 위
+            elif(self.action ==5 and x == unx1 and y + 55 == uny1): # 위
                 self.pos =x,y
-            elif(self.action ==4 and x == unx1 and y - 60 == uny1): # 아래
+            elif(self.action ==4 and x == unx1 and y - 55 == uny1): # 아래
                 self.pos =x,y
             
        
@@ -88,8 +92,8 @@ class Player:
    
      def updateDelta(self, ddx, ddy):
         dx,dy = self.delta
-        dx += ddx * 60
-        dy += ddy * 60
+        dx += ddx * 45
+        dy += ddy * 55
         if ddx != 0:
             self.updateAction(dx, ddx)
         if ddy !=0:
@@ -129,19 +133,25 @@ class Player:
 
      def Lcollision(self):
          x,y = self.pos
-         self.pos = x+60, y
+         self.pos = x+45, y
     
      def Rcollision(self):
          x,y = self.pos
-         self.pos = x-60, y
+         self.pos = x-45, y
 
      def Ucollision(self):
          x,y = self.pos
-         self.pos = x, y -60
+         self.pos = x, y -55
 
      def Dcollision(self):
          x,y = self.pos
-         self.pos = x, y +60
+         self.pos = x, y +55
+
+class Player2:
+    pass
+
+class Player3:
+    pass
               
            
             

@@ -5,6 +5,7 @@ from player import Player
 import time
 from skell import *
 from stone import *
+import stage2
 
 
 CountDown_Color = (255,255,255)
@@ -29,11 +30,11 @@ def enter():
     state = STATE_IN_GAME
 
     global game_over_image
-    game_over_image = gfw.image.load('res/game over2.png')
+    game_over_image = gfw.image.load('res/game over.png')
 
     global clear_image,success_image
     clear_image = gfw.image.load('res/clear.png')
-    success_image = gfw.image.load('res/success.png')
+    
     
     global font
     font = gfw.font.load('res/ConsolaMalgun.ttf', 100)
@@ -67,6 +68,7 @@ def check_collision():
 def end_game():
     global state
     state = STATE_GAME_OVER
+    
 
 def clear():
     x,y = player.clear_check()
@@ -76,7 +78,7 @@ def check_clear():
     global state,Countdown
     x,y = clear()
     if Countdown > 0:
-        if x==580 and y == 160:
+        if x==535 and y == 175:
             state = CLEAR
 
         
@@ -97,9 +99,12 @@ def update():
 
     if Countdown == 0:
         end_game()
+    elif Countdown == -1:
+        gfw.pop()
 
-    if state != STATE_IN_GAME:
-        return # 게임 종료 (근데 계속 움직임)
+    
+    elif state == CLEAR:
+        gfw.change(stage2)
     
     
    
@@ -107,7 +112,7 @@ def update():
   
  
 def draw():
-   Countdown_pos = 690,550
+   Countdown_pos = 30,140
   
   # font.draw(*score_pos, 'Score : %.1f' % score, SCORE_TEXT_COLOR)
    map.draw()
@@ -116,16 +121,20 @@ def draw():
    skell2.draw()
    stone.draw()
    stone2.draw()
-   font.draw(*Countdown_pos,'%.1d' % Countdown,CountDown_Color)
+   if Countdown >=10:
+       font.draw(*Countdown_pos,'%.1d' % Countdown,CountDown_Color)
+   elif Countdown < 10:
+       font.draw(*Countdown_pos,'0%.1d' % Countdown,CountDown_Color)
+
+
+   
   # gfw.world.draw()
    if state == STATE_GAME_OVER:
         # 화면 한 가운데를 중심으로 이미지를 출력한다.
         x, y = get_canvas_width() // 2, get_canvas_height() // 2
-        game_over_image.draw(x, y)
-   if state == CLEAR:
-       a, b = get_canvas_width() // 2, get_canvas_height() // 2
-       success_image.draw(a,b)
-       clear_image.draw(a,b)
+        game_over_image.clip_draw_to_origin(0, 0,game_over_image.w, game_over_image.h,0,0, get_canvas_width(), get_canvas_height())
+        
+  
    
 def handle_event(e):
     global player,Countdown
@@ -160,6 +169,10 @@ def Call(a):
          player.Ucollision()
 
 def exit():
+    pass
+def pause():
+    pass
+def resume():
     pass
 
 if __name__ == '__main__':
