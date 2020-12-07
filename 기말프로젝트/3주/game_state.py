@@ -161,7 +161,7 @@ def handle_event(e):
 def Call(a):
     global player
     x,y = player.ReturnAction()
-    print(y)
+   
     if x > 0 and y == 0: # 좌
          a.Lcollision()
          player.Lcollision()

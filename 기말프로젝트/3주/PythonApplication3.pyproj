@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f399f53d-adf5-4f3f-b38e-c67524e8c126</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>game_state.py</StartupFile>
+    <StartupFile>stage2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,11 +21,17 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="box.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="game_state.py" />
     <Compile Include="gfw.py" />
     <Compile Include="gfw_image.py" />
     <Compile Include="gobj.py" />
     <Compile Include="helper.py" />
+    <Compile Include="key.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Last stage.py">
       <SubType>Code</SubType>
     </Compile>

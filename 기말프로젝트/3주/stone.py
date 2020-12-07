@@ -35,7 +35,7 @@ class Stone:
       #  frame = self.time * 12
       #  self.fidx =int(frame) % 12
         x,y = self.pos1
-        print(self.pos1)
+        
 
         for i in range(33):
             unx1 , uny1 = map1[i] 
@@ -61,7 +61,7 @@ class Stone:
        
         x,y = self.pos1
         self.pos1 = x-45,y
-        print(self.pos1)
+       
     def Rcollision(self):
         x,y = self.pos1
         self.pos1 = x+45,y
@@ -145,7 +145,370 @@ class Stone2:
         self.pos2 = x,y-55
       
 class St2stone:
-    pass
+    
+    image = None
+
+    def __init__(self):
+     
+      self.pos1 = 500,350
+      
+      self.Prepos = 0,0 # 이전 좌표
+      self.delta = 0,0
+      self.target = None
+      self.targets = []
+      if St2stone.image == None:
+            St2stone.image = gfw.image.load(RES_DIR + '/stone.png')
+
+    
+       
+    def update(self):
+        
+        map1 =((420,515),(460,515),\
+              (380,460),(500,460),\
+              (300,405),(340,405),(380,405),(540,405),\
+              (260,350),(380,350),(540,350),\
+              (540,295),(260,295),\
+              (540,240),(340,240),(260,240),\
+              (260,185),(340,185),(380,185),(460,185),(500,185),\
+              (260,130),(460,130),(500,130),(540,130),\
+              (260,75),(300,75),(340,75),(380,75),(420,75),(460,75),(500,75),(540,75))
+        
+        dx,dy=self.delta
+      #  self.time += gfw.delta_time
+      #  frame = self.time * 12
+      #  self.fidx =int(frame) % 12
+        x,y = self.pos1
+       
+        for i in range(33):
+            unx1 , uny1 = map1[i] 
+            if( x == unx1 and y == uny1):
+                self.pos1 = self.Prepos
+           
+        self.Prepos = x,y
+
+    
+    def get_bb(self):
+        x,y = self.pos1
+        return x-10, y-10, x+10, y+10
+   
+
+
+    def draw(self):
+        self.image.clip_draw(0, 0,100,100, *self.pos1,50,55)
+      
+       
+       
+
+    def Lcollision(self):
+       
+        x,y = self.pos1
+        self.pos1 = x-40,y
+   
+    def Rcollision(self):
+        x,y = self.pos1
+        self.pos1 = x+40,y
+
+    def Ucollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y +55
+
+    def Dcollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y-55
+
+class St2stone1:
+    
+    image = None
+
+    def __init__(self):
+     
+      self.pos1 = 460,350
+      
+      self.Prepos = 0,0 # 이전 좌표
+      self.delta = 0,0
+      self.target = None
+      self.targets = []
+      if St2stone1.image == None:
+            St2stone1.image = gfw.image.load(RES_DIR + '/stone.png')
+
+    
+       
+    def update(self):
+        
+        map1 =((420,515),(460,515),\
+              (380,460),(500,460),\
+              (300,405),(340,405),(380,405),(540,405),\
+              (260,350),(380,350),(540,350),\
+              (540,295),(260,295),\
+              (540,240),(340,240),(260,240),\
+              (260,185),(340,185),(380,185),(460,185),(500,185),\
+              (260,130),(460,130),(500,130),(540,130),\
+              (260,75),(300,75),(340,75),(380,75),(420,75),(460,75),(500,75),(540,75))
+        
+        dx,dy=self.delta
+      #  self.time += gfw.delta_time
+      #  frame = self.time * 12
+      #  self.fidx =int(frame) % 12
+        x,y = self.pos1
+       
+
+        for i in range(33):
+            unx1 , uny1 = map1[i] 
+            if( x == unx1 and y == uny1):
+                self.pos1 = self.Prepos
+           
+        self.Prepos = x,y
+
+    
+    def get_bb(self):
+        x,y = self.pos1
+        return x-10, y-10, x+10, y+10
+   
+
+
+    def draw(self):
+        self.image.clip_draw(0, 0,100,100, *self.pos1,50,55)
+      
+       
+       
+
+    def Lcollision(self):
+       
+        x,y = self.pos1
+        self.pos1 = x-40,y
+   
+    def Rcollision(self):
+        x,y = self.pos1
+        self.pos1 = x+40,y
+
+    def Ucollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y +55
+
+    def Dcollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y-55
+
+class St2stone2:
+    
+    image = None
+
+    def __init__(self):
+     
+      self.pos1 = 420,350
+      
+      self.Prepos = 0,0 # 이전 좌표
+      self.delta = 0,0
+      self.target = None
+      self.targets = []
+      if St2stone2.image == None:
+            St2stone2.image = gfw.image.load(RES_DIR + '/stone.png')
+
+    
+       
+    def update(self):
+        
+        map1 =((420,515),(460,515),\
+              (380,460),(500,460),\
+              (300,405),(340,405),(380,405),(540,405),\
+              (260,350),(380,350),(540,350),\
+              (540,295),(260,295),\
+              (540,240),(340,240),(260,240),\
+              (260,185),(340,185),(380,185),(460,185),(500,185),\
+              (260,130),(460,130),(500,130),(540,130),\
+              (260,75),(300,75),(340,75),(380,75),(420,75),(460,75),(500,75),(540,75))
+        
+        dx,dy=self.delta
+      #  self.time += gfw.delta_time
+      #  frame = self.time * 12
+      #  self.fidx =int(frame) % 12
+        x,y = self.pos1
+     
+
+        for i in range(33):
+            unx1 , uny1 = map1[i] 
+            if( x == unx1 and y == uny1):
+                self.pos1 = self.Prepos
+           
+        self.Prepos = x,y
+
+    
+    def get_bb(self):
+        x,y = self.pos1
+        return x-10, y-10, x+10, y+10
+   
+
+
+    def draw(self):
+        self.image.clip_draw(0, 0,100,100, *self.pos1,50,55)
+      
+       
+       
+
+    def Lcollision(self):
+       
+        x,y = self.pos1
+        self.pos1 = x-40,y
+   
+    def Rcollision(self):
+        x,y = self.pos1
+        self.pos1 = x+40,y
+
+    def Ucollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y +55
+
+    def Dcollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y-55
+
+class St2stone3:
+    
+    image = None
+
+    def __init__(self):
+     
+      self.pos1 = 460,295
+      
+      self.Prepos = 0,0 # 이전 좌표
+      self.delta = 0,0
+      self.target = None
+      self.targets = []
+      if St2stone3.image == None:
+            St2stone3.image = gfw.image.load(RES_DIR + '/stone.png')
+
+    
+       
+    def update(self):
+        
+        map1 =((420,515),(460,515),\
+              (380,460),(500,460),\
+              (300,405),(340,405),(380,405),(540,405),\
+              (260,350),(380,350),(540,350),\
+              (540,295),(260,295),\
+              (540,240),(340,240),(260,240),\
+              (260,185),(340,185),(380,185),(460,185),(500,185),\
+              (260,130),(460,130),(500,130),(540,130),\
+              (260,75),(300,75),(340,75),(380,75),(420,75),(460,75),(500,75),(540,75))
+        
+        dx,dy=self.delta
+      #  self.time += gfw.delta_time
+      #  frame = self.time * 12
+      #  self.fidx =int(frame) % 12
+        x,y = self.pos1
+        
+
+        for i in range(33):
+            unx1 , uny1 = map1[i] 
+            if( x == unx1 and y == uny1):
+                self.pos1 = self.Prepos
+           
+        self.Prepos = x,y
+
+    
+    def get_bb(self):
+        x,y = self.pos1
+        return x-10, y-10, x+10, y+10
+   
+
+
+    def draw(self):
+        self.image.clip_draw(0, 0,100,100, *self.pos1,50,55)
+      
+       
+       
+
+    def Lcollision(self):
+       
+        x,y = self.pos1
+        self.pos1 = x-40,y
+   
+    def Rcollision(self):
+        x,y = self.pos1
+        self.pos1 = x+40,y
+
+    def Ucollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y +55
+
+    def Dcollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y-55
+
+
+class St2stone4:
+    
+    image = None
+
+    def __init__(self):
+     
+      self.pos1 = 340,295
+      
+      self.Prepos = 0,0 # 이전 좌표
+      self.delta = 0,0
+      self.target = None
+      self.targets = []
+      if St2stone4.image == None:
+            St2stone4.image = gfw.image.load(RES_DIR + '/stone.png')
+
+    
+       
+    def update(self):
+        
+        map1 =((420,515),(460,515),\
+              (380,460),(500,460),\
+              (300,405),(340,405),(380,405),(540,405),\
+              (260,350),(380,350),(540,350),\
+              (540,295),(260,295),\
+              (540,240),(340,240),(260,240),\
+              (260,185),(340,185),(380,185),(460,185),(500,185),\
+              (260,130),(460,130),(500,130),(540,130),\
+              (260,75),(300,75),(340,75),(380,75),(420,75),(460,75),(500,75),(540,75))
+        
+        dx,dy=self.delta
+      #  self.time += gfw.delta_time
+      #  frame = self.time * 12
+      #  self.fidx =int(frame) % 12
+        x,y = self.pos1
+       
+
+        for i in range(33):
+            unx1 , uny1 = map1[i] 
+            if( x == unx1 and y == uny1):
+                self.pos1 = self.Prepos
+           
+        self.Prepos = x,y
+
+    
+    def get_bb(self):
+        x,y = self.pos1
+        return x-10, y-10, x+10, y+10
+   
+
+
+    def draw(self):
+        self.image.clip_draw(0, 0,100,100, *self.pos1,50,55)
+      
+       
+       
+
+    def Lcollision(self):
+       
+        x,y = self.pos1
+        self.pos1 = x-40,y
+   
+    def Rcollision(self):
+        x,y = self.pos1
+        self.pos1 = x+40,y
+
+    def Ucollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y +55
+
+    def Dcollision(self):
+        x,y = self.pos1
+        self.pos1 = x,y-55
+
 
 class Ltstone:
     pass

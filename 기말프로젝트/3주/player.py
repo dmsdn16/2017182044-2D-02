@@ -8,21 +8,12 @@ import gfw
 
 
 class Player:
-     KEY_MAP = {
-        (SDL_KEYDOWN, SDLK_LEFT):  (-1,  0),
-        (SDL_KEYDOWN, SDLK_RIGHT): ( 1,  0),
-        (SDL_KEYDOWN, SDLK_DOWN):  ( 0, -1),
-        (SDL_KEYDOWN, SDLK_UP):    ( 0,  1),
-        (SDL_KEYUP, SDLK_LEFT):    ( 1,  0),
-        (SDL_KEYUP, SDLK_RIGHT):   (-1,  0),
-        (SDL_KEYUP, SDLK_DOWN):    ( 0,  1),
-        (SDL_KEYUP, SDLK_UP):      ( 0, -1),
-    }
+  
      KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
      image = None
 
      def __init__(self):
-       self.pos = 490,450 # 550 420(map2), 160 150(last map)
+       self.pos = 490,175#490,450 # 550 420(map2), 160 150(last map)
        self.action = 3
        self.fidx = 5
        self.delta = 0,0
@@ -51,7 +42,7 @@ class Player:
                (220,175),(580,175),\
                (220,120),(265,120),(310,120),(35,120),(400,120),(445,120),(490,120),(535,120),\
                (445,505),(490,505))
-       print(self.pos)
+       
        x,y = self.pos
        dx,dy = self.delta
        
@@ -113,27 +104,12 @@ class Player:
          return x,y
 
    
-     def updateDelta(self,ddx,ddy):
+     def updateDelta(self):
         dx,dy = 4.5, 5.5
-        
-        if ddx != 0:
-           self.updateAction(dx, ddx)
-        if ddy !=0:
-           self.updateActionY(dy,ddy)
+       
         self.delta = dx, dy
         
-     def updateAction(self, dx, ddx):
-        self.action = \
-            0 if dx < 0 else \
-            1 if dx > 0 else \
-            2 if ddx > 0 else 3
-       
-
-     def updateActionY(self,dy,ddy):
-        self.action = \
-            4 if dy < 0 else \
-            5 if dy >0 else \
-            6 if ddy > 0 else 7
+   
        
      
      def handle_event(self, e):
@@ -143,16 +119,16 @@ class Player:
                 
                  if e.key == SDLK_LEFT:
                      self.x_amount +=45
-                     self.updateDelta(-1,0)
+                     self.updateDelta()
                  elif e.key == SDLK_RIGHT:
                      self.x_amount -=45
-                     self.updateDelta(1,0)
+                     self.updateDelta()
                  elif e.key == SDLK_UP:
                      self.y_amount -=55
-                     self.updateDelta(0,1)
+                     self.updateDelta()
                  elif e.key == SDLK_DOWN:
                      self.y_amount +=55
-                     self.updateDelta(0,-1)
+                     self.updateDelta()
                 
           
 
