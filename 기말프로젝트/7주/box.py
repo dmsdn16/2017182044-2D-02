@@ -40,3 +40,5 @@ class FBox:
          
          x,y = self.pos
          return x-10,y-10,x+10,y+10 
+    def reset(self):
+        self.pos = 0, 10

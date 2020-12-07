@@ -827,7 +827,7 @@ class LS4:
       #  frame = self.time * 12
       #  self.fidx =int(frame) % 12
         x,y = self.pos1
-        
+        print(self.pos1)
 
         for i in range(25):
             unx1 , uny1 = map1[i] 

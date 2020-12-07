@@ -10,7 +10,7 @@ from key import Fkey
 from box import FBox
 import Ending
 import dummy2
-
+import resetdummy3
 
 CountDown_Color = (255,255,255)
 STATE_IN_GAME,STATE_GAME_OVER,CLEAR = range(3)
@@ -60,7 +60,7 @@ def enter():
     gfw.world.add(gfw.layer.box,box)
 
     global Countdown,state,bgm
-    Countdown = 34
+    Countdown = 35
     state = STATE_IN_GAME
 
     bgm = load_music('res/stone.mp3')
@@ -254,7 +254,7 @@ def check_collision():
                      Reversecall(LS4)
 
             elif collision(taker,LS5):
-                Call(LS4)
+                Call(LS5)
                 bgm.play()
                 if collision(LS5,LS):
                      Reversecall(LS5)
@@ -547,14 +547,17 @@ def check_collision():
                 if z != 0:
                     gfw.world.remove(box)
                     box.reset()
-                if x > 0 and y == 0: # 좌
+                if z== 0:
+                    if x > 0 and y == 0: # 좌
                       taker.Lcollision()
-                if x < 0 and y == 0: # 우
+                    if x < 0 and y == 0: # 우
                       taker.Rcollision()
-                if x == 0 and y > 0: # 아래
+                    if x == 0 and y > 0: # 아래
                       taker.Dcollision()
-                if x ==  0 and y < 0: # 위
+                    if x ==  0 and y < 0: # 위
                       taker.Ucollision()
+
+                
 
        
    
@@ -621,6 +624,8 @@ def handle_event(e):
         a,b = taker.Returnamount()
         if a== 0 and b == 0:
             Countdown -= 1
+        if e.key == SDLK_r:
+            gfw.change(resetdummy3)
         
         if e.key == SDLK_ESCAPE:
             gfw.pop()

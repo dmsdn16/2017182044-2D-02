@@ -239,7 +239,7 @@ class Hell:
       
        x,y = self.pos
        dx,dy = self.delta
-       
+     
        if self.x_amount < 0:
            self.pos = x + 4 , y
        if self.x_amount > 0:

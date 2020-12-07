@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>f399f53d-adf5-4f3f-b38e-c67524e8c126</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>stage2.py</StartupFile>
+    <StartupFile>final.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -52,6 +52,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="player.py" />
+    <Compile Include="resetdummy.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="resetdummy2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="resetdummy3.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="skell.py" />
     <Compile Include="stage2.py">
       <SubType>Code</SubType>

@@ -6,7 +6,7 @@ import time
 from skell import *
 from stone import *
 import stage2
-
+import resetdummy
 
 CountDown_Color = (255,255,255)
 STATE_IN_GAME,STATE_GAME_OVER,CLEAR = range(3)
@@ -156,7 +156,8 @@ def handle_event(e):
         a,b = player.Returnamount()
         if a== 0 and b == 0:
             Countdown -= 1
-        
+        if e.key == SDLK_r:
+            gfw.change(resetdummy)
         if e.key == SDLK_ESCAPE:
             gfw.pop()
     if state != CLEAR:
