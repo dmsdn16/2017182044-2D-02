@@ -69,7 +69,7 @@
 ## 핵심코드
          - 충돌 시 방향성 입력받기 (현재 미구현 상태라 충돌 체크만 하고 있습니다)
 ## 최종 진행상황
-
+  ![234](https://user-images.githubusercontent.com/32299218/101347697-d05ae100-38cd-11eb-813f-eb918fec04e3.PNG)
 
 ## commit insight
   ![123](https://user-images.githubusercontent.com/32299218/101347443-72c69480-38cd-11eb-8164-9c1dc4abdcfd.png)
