@@ -72,10 +72,7 @@
 
 
 ## commit insight
-
-
-## commit 표
-
+  ![123](https://user-images.githubusercontent.com/32299218/101347443-72c69480-38cd-11eb-8164-9c1dc4abdcfd.png)
 
 ## 힘들었던 점
     - 충돌체크를 방향에 따라 한 땀 한 땀 구현하는 것이 힘들었다
