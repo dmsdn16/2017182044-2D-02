@@ -19,6 +19,9 @@ class Box:
          
          x,y = self.pos
          return x-10,y-10,x+10,y+10 
+    def reset(self):
+        self.pos = 0, 10
+
 class FBox:
     def __init__(self):
         #self.image = load_image(RES_DIR + '/basic map.png')

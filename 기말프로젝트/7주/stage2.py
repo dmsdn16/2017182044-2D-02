@@ -8,7 +8,7 @@ from stone import *
 from key import Key
 from box import Box
 import final
-
+import dummy
 
 CountDown_Color = (255,255,255)
 STATE_IN_GAME,STATE_GAME_OVER,CLEAR = range(3)
@@ -255,6 +255,7 @@ def check_collision():
             elif collision(taker,box):
                 if z != 0:
                     gfw.world.remove(box)
+                    box.reset()
                 if x > 0 and y == 0: # 좌
                       taker.Lcollision()
                 if x < 0 and y == 0: # 우
@@ -324,7 +325,7 @@ def update():
     if Countdown == 0:
         end_game()
     elif Countdown == -1:
-        gfw.pop()
+        gfw.change(dummy)
 
     
     elif state == CLEAR: 

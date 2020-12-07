@@ -24,6 +24,12 @@
     <Compile Include="box.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="dummy.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="dummy2.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Ending.py">
       <SubType>Code</SubType>
     </Compile>
