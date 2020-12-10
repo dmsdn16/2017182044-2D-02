@@ -510,19 +510,19 @@ class St2stone4:
         self.pos1 = x,y-55
 
 
-class LS:
+class Stone:
     image = None
 
     def __init__(self):
      
       self.pos1 = 240,220
-      
+     
       self.Prepos = 0,0 # 이전 좌표
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS.image == None:
-            LS.image = gfw.image.load('res/red.png')
+      if Stone.image == None:
+            Stone.image = gfw.image.load('res/red.png')
 
     
        
@@ -532,8 +532,8 @@ class LS:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -542,7 +542,7 @@ class LS:
       #  frame = self.time * 12
       #  self.fidx =int(frame) % 12
         x,y = self.pos1
-        
+       
 
         for i in range(25):
             unx1 , uny1 = map1[i] 
@@ -581,7 +581,7 @@ class LS:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS1:
+class Stone1:
     image = None
 
     def __init__(self):
@@ -592,8 +592,8 @@ class LS1:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS1.image == None:
-            LS1.image = gfw.image.load('res/red.png')
+      if Stone1.image == None:
+            Stone1.image = gfw.image.load('res/red.png')
 
     
        
@@ -603,8 +603,8 @@ class LS1:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -653,7 +653,7 @@ class LS1:
         self.pos1 = x,y-60
 
 
-class LS2:
+class Stone2:
     image = None
 
     def __init__(self):
@@ -664,8 +664,8 @@ class LS2:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS2.image == None:
-            LS2.image = gfw.image.load( 'res/red.png')
+      if Stone2.image == None:
+            Stone2.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -675,8 +675,8 @@ class LS2:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -724,7 +724,7 @@ class LS2:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS3:
+class Stone3:
     image = None
 
     def __init__(self):
@@ -735,8 +735,8 @@ class LS3:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS3.image == None:
-            LS3.image = gfw.image.load( 'res/red.png')
+      if Stone3.image == None:
+            Stone3.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -746,8 +746,8 @@ class LS3:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -795,7 +795,7 @@ class LS3:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS4:
+class Stone4:
     image = None
 
     def __init__(self):
@@ -806,8 +806,8 @@ class LS4:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS4.image == None:
-            LS4.image = gfw.image.load( 'res/red.png')
+      if Stone4.image == None:
+            Stone4.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -817,8 +817,8 @@ class LS4:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -827,8 +827,7 @@ class LS4:
       #  frame = self.time * 12
       #  self.fidx =int(frame) % 12
         x,y = self.pos1
-        print(self.pos1)
-
+        
         for i in range(25):
             unx1 , uny1 = map1[i] 
             if( x == unx1 and y == uny1):
@@ -866,7 +865,7 @@ class LS4:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS5:
+class Stone5:
     image = None
 
     def __init__(self):
@@ -877,8 +876,8 @@ class LS5:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS5.image == None:
-            LS5.image = gfw.image.load( 'res/red.png')
+      if Stone5.image == None:
+            Stone5.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -888,8 +887,8 @@ class LS5:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -937,7 +936,7 @@ class LS5:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS6:
+class Stone6:
     image = None
 
     def __init__(self):
@@ -948,8 +947,8 @@ class LS6:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS6.image == None:
-            LS6.image = gfw.image.load( 'res/red.png')
+      if Stone6.image == None:
+            Stone6.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -959,8 +958,8 @@ class LS6:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -1008,7 +1007,7 @@ class LS6:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS7:
+class Stone7:
     image = None
 
     def __init__(self):
@@ -1019,8 +1018,8 @@ class LS7:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS7.image == None:
-            LS7.image = gfw.image.load( 'res/red.png')
+      if Stone7.image == None:
+            Stone7.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -1030,8 +1029,8 @@ class LS7:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -1079,7 +1078,7 @@ class LS7:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS8:
+class Stone8:
     image = None
 
     def __init__(self):
@@ -1090,8 +1089,8 @@ class LS8:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS8.image == None:
-            LS8.image = gfw.image.load( 'res/red.png')
+      if Stone8.image == None:
+            Stone8.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -1101,8 +1100,8 @@ class LS8:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -1150,7 +1149,7 @@ class LS8:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS9:
+class Stone9:
     image = None
 
     def __init__(self):
@@ -1161,8 +1160,8 @@ class LS9:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS9.image == None:
-            LS9.image = gfw.image.load( 'res/red.png')
+      if Stone9.image == None:
+            Stone9.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -1172,8 +1171,8 @@ class LS9:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -1221,7 +1220,7 @@ class LS9:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS10:
+class Stone10:
     image = None
 
     def __init__(self):
@@ -1232,8 +1231,8 @@ class LS10:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS10.image == None:
-            LS10.image = gfw.image.load( 'res/red.png')
+      if Stone10.image == None:
+            Stone10.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -1243,8 +1242,8 @@ class LS10:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -1292,7 +1291,7 @@ class LS10:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS11:
+class Stone11:
     image = None
 
     def __init__(self):
@@ -1303,8 +1302,8 @@ class LS11:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS11.image == None:
-            LS11.image = gfw.image.load( 'res/red.png')
+      if Stone11.image == None:
+            Stone11.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -1314,8 +1313,8 @@ class LS11:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -1363,7 +1362,7 @@ class LS11:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS12:
+class Stone12:
     image = None
 
     def __init__(self):
@@ -1374,8 +1373,8 @@ class LS12:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS12.image == None:
-            LS12.image = gfw.image.load( 'res/red.png')
+      if Stone12.image == None:
+            Stone12.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -1385,8 +1384,8 @@ class LS12:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         
@@ -1434,7 +1433,7 @@ class LS12:
         x,y = self.pos1
         self.pos1 = x,y-60
 
-class LS13:
+class Stone13:
     image = None
 
     def __init__(self):
@@ -1445,8 +1444,8 @@ class LS13:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if LS13.image == None:
-            LS13.image = gfw.image.load( 'res/red.png')
+      if Stone13.image == None:
+            Stone13.image = gfw.image.load( 'res/red.png')
 
     
        
@@ -1456,8 +1455,8 @@ class LS13:
                 (320,400),(480,400),\
                 (280,340),(320,340),(480,340),(520,340),\
                 (240,280),(320,280),(480,280),(560,280),\
-                (210,220),(600,220),\
-                (210,160),(600,160),\
+                (200,220),(600,220),\
+                (200,160),(600,160),\
                 (240,100),(560,100),\
                 (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
         

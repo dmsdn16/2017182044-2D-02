@@ -4,14 +4,14 @@ import helper
 from time import sleep
 import gfw
 
-
+kick_time = 0.5
 
 
 class Taker:
     
      KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
      image = None
-
+     image2 = None
      
      def __init__(self):
        self.pos = 500,240 # 550 420(map2), 160 150(last map)
@@ -23,19 +23,36 @@ class Taker:
        self.time =0
        self.x_amount = 0
        self.y_amount = 0
-
+       self.bkick = False
+       self.dir = 1
+       self.fid = 24
+       self.k_fidx = 0
+       self.k_fidy = 627
+       self.kick_delta_time = 0
        global key
 
        key = 0
        
        if Taker.image == None:
             Taker.image = gfw.image.load('res/Hero(R).png')
-       self.radius = self.image.w //2
-
+       if Taker.image2 == None:
+            Taker.image2 = gfw.image.load('res/Hero(L).png')
+      
      def draw(self):
-        sx = self.fidx * 100
-        sy = self. action * 0
-        self.image.clip_draw(sx,827,100,100, *self.pos,50,50)
+         sx = self.fidx * 100
+         sy = self. action * 0
+         fx = 2500 - self.fid * 100
+        
+         if self.dir == 1: # 좌
+             if self.bkick:
+                 self.image2.clip_draw(2500 - self.k_fidx * 100,615,100,100, *self.pos,50,50) # 627
+             else:
+                 self.image2.clip_draw(fx,827,100,100, *self.pos,50,50) # 627
+         elif self.dir == 2: # 우
+             if self.bkick:
+                 self.image.clip_draw(self.k_fidx * 100,615,100,100, *self.pos,50,50) # 627
+             else:
+                 self.image.clip_draw(sx,827,100,100, *self.pos,50,50) # 627
 
      def update(self):
 
@@ -72,9 +89,9 @@ class Taker:
       
        #self.pos = x+dx, y+dy
        self.time += gfw.delta_time
-       frame = self.time * 12
-       self.fidx =int(frame) % 12
-
+       frame = self.time * 12 
+       self.fidx =int(frame) % 11 + 1
+       self.fid = int(frame) % 11 + 1
        for i in range(33):
             unx1 , uny1 = map1[i]
             
@@ -99,6 +116,14 @@ class Taker:
                 else:
                     self.speed = 0
                     self.updateAction(0, ddx)
+
+       if self.bkick:
+           self.kick_delta_time += gfw.delta_time
+           self.k_fidx = round((self.kick_delta_time / kick_time) * 12)
+           if self.k_fidx == 12:
+               self.bkick =False
+               self.kick_delta_time = 0
+               self.k_fidx = 0 
      
      def get_bb(self):
          
@@ -126,9 +151,11 @@ class Taker:
              if e.type == SDL_KEYDOWN:
                 
                  if e.key == SDLK_LEFT:
+                     self.dir = 1
                      self.x_amount +=40
                      self.updateDelta()
                  elif e.key == SDLK_RIGHT:
+                     self.dir = 2
                      self.x_amount -=40
                      self.updateDelta()
                  elif e.key == SDLK_UP:
@@ -194,16 +221,19 @@ class Taker:
          x,y = self.pos
          
          return x,y
+     def hit(self):
+          self.bkick = True
  
 
 class Hell:
     
      KEYDOWN_SPACE = (SDL_KEYDOWN, SDLK_SPACE)
      image = None
+     image2 =None
 
      
      def __init__(self):
-       self.pos = 280,100#500,240 # 550 420(map2), 160 150(last map)
+       self.pos = 280,100 # 550 420(map2), 160 150(last map)
        self.action = 3
        self.fidx = 5
        self.delta = 0,0
@@ -212,6 +242,12 @@ class Hell:
        self.time =0
        self.x_amount = 0
        self.y_amount = 0
+       self.bkick = False
+       self.dir = 2
+       self.fid = 24
+       self.k_fidx = 0
+       self.k_fidy = 627
+       self.kick_delta_time = 0
 
        global key
 
@@ -219,12 +255,25 @@ class Hell:
        
        if Hell.image == None:
             Hell.image = gfw.image.load('res/Hero(R).png')
-       self.radius = self.image.w //2
+       if Hell.image2 == None:
+           Hell.image2 = gfw.image.load('res/Hero(L).png')
+
 
      def draw(self):
         sx = self.fidx * 100
         sy = self. action * 0
-        self.image.clip_draw(sx,827,100,100, *self.pos,50,50)
+        fx = 2500 - self.fid * 100
+        
+        if self.dir == 1: # 좌
+             if self.bkick:
+                 self.image2.clip_draw(2500 - self.k_fidx * 100,615,100,100, *self.pos,50,50) # 627
+             else:
+                 self.image2.clip_draw(fx,827,100,100, *self.pos,50,50) # 627
+        elif self.dir == 2: # 우
+             if self.bkick:
+                   self.image.clip_draw(self.k_fidx * 100,615,100,100, *self.pos,50,50) # 627
+             else:
+                 self.image.clip_draw(sx,827,100,100, *self.pos,50,50) # 627
 
      def update(self):
 
@@ -232,8 +281,8 @@ class Hell:
                (320,400),(480,400),\
                (280,340),(320,340),(480,340),(520,340),\
                (240,280),(320,280),(480,280),(560,280),\
-               (210,220),(600,220),\
-               (210,160),(600,160),\
+               (200,220),(600,220),\
+               (200,160),(600,160),\
                (240,100),(560,100),\
                (280,40),(320,40),(360,40),(400,40),(440,40),(480,40),(520,40))
       
@@ -257,10 +306,10 @@ class Hell:
        if self.y_amount < 0:
            self.y_amount += 6
       
-       #self.pos = x+dx, y+dy
        self.time += gfw.delta_time
-       frame = self.time * 12
-       self.fidx =int(frame) % 12
+       frame = self.time * 12 
+       self.fidx =int(frame) % 11 + 1
+       self.fid = int(frame) % 11 + 1
 
        for i in range(25):
             unx1 , uny1 = map1[i]
@@ -286,6 +335,14 @@ class Hell:
                 else:
                     self.speed = 0
                     self.updateAction(0, ddx)
+
+       if self.bkick:
+           self.kick_delta_time += gfw.delta_time
+           self.k_fidx = round((self.kick_delta_time / kick_time) * 12)
+           if self.k_fidx == 12:
+               self.bkick =False
+               self.kick_delta_time = 0
+               self.k_fidx = 0 
      
      def get_bb(self):
          
@@ -313,9 +370,11 @@ class Hell:
              if e.type == SDL_KEYDOWN:
                 
                  if e.key == SDLK_LEFT:
+                     self.dir = 1
                      self.x_amount +=40
                      self.updateDelta()
                  elif e.key == SDLK_RIGHT:
+                     self.dir = 2
                      self.x_amount -=40
                      self.updateDelta()
                  elif e.key == SDLK_UP:
@@ -366,6 +425,9 @@ class Hell:
          x,y = self.pos
          
          return x,y
+    
+     def hit(self):
+        self.bkick = True
            
 
 

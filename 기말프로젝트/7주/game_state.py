@@ -62,17 +62,20 @@ def check_collision():
             if collision(player,skell):
                vgm.play()
                Call(skell)
-              
+               player.hit()
               
             elif collision(player,skell2):
                 Call(skell2)
                 vgm.play()
+                player.hit()
             elif collision(player,stone):
                 Call(stone)
                 bgm.play()
+                player.hit()
             elif collision(player,stone2):
                 Call(stone2)
                 bgm.play()
+                player.hit()
             elif collision(stone,skell):
                 gfw.world.remove(skell)
             elif collision(stone2,skell):

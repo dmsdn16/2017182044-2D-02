@@ -82,6 +82,7 @@ def check_collision():
             if collision(taker,skell):
                Call(skell)
                vgm.play()
+               taker.hit()
                if collision(skell,stone):
                    gfw.world.remove(skell)
                    skell.pos_init()
@@ -106,6 +107,7 @@ def check_collision():
             elif collision(taker,skell1):
                 Call(skell1)
                 vgm.play()
+                taker.hit()
                 if collision(skell1,stone):
                    gfw.world.remove(skell1)
                 elif collision(skell1,stone1):
@@ -128,6 +130,7 @@ def check_collision():
             elif collision(taker,skell2):
                 Call(skell2)
                 vgm.play()
+                taker.hit()
                 if collision(skell2,stone):
                    gfw.world.remove(skell2)
                    skell2.pos_init()
@@ -152,6 +155,7 @@ def check_collision():
             elif collision(taker,stone):
                 Call(stone)
                 bgm.play()
+                taker.hit()
                 if collision(stone,skell):
                     Reversecall(stone)
                 elif collision(stone,skell1):
@@ -169,6 +173,7 @@ def check_collision():
             elif collision(taker,stone1):
                 Call(stone1)
                 bgm.play()
+                taker.hit()
                 if collision(stone1,skell):
                     Reversecall(stone1)
                 elif collision(stone1,skell1):
@@ -191,7 +196,7 @@ def check_collision():
             elif collision(taker,stone2):
                 Call(stone2)
                 bgm.play()
-                print(10)
+                taker.hit()
                 if collision(stone2,skell):
                     Reversecall(stone2)
                 elif collision(stone2,skell1):
@@ -213,6 +218,7 @@ def check_collision():
             elif collision(taker,stone3):
                 Call(stone3)
                 bgm.play()
+                taker.hit()
                 if collision(stone3,skell):
                     Reversecall(stone3)
                 elif collision(stone3,skell1):
@@ -233,6 +239,7 @@ def check_collision():
             elif collision(taker,stone4):
                 Call(stone4)
                 bgm.play()
+                taker.hit()
                 if collision(stone4,skell):
                     Reversecall(stone4)
                 elif collision(stone4,skell1):
