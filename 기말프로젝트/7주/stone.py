@@ -3,7 +3,7 @@ import gfw
 from gobj import *
 import helper
 
-class Stone:
+class FStone:
 
     image = None
 
@@ -15,8 +15,8 @@ class Stone:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if Stone.image == None:
-            Stone.image = gfw.image.load('res/stone.png')
+      if FStone.image == None:
+            FStone.image = gfw.image.load('res/stone.png')
 
     
        
@@ -74,7 +74,7 @@ class Stone:
         x,y = self.pos1
         self.pos1 = x,y-55
 
-class Stone2:
+class FStone2:
     image = None
 
     def __init__(self):
@@ -84,8 +84,8 @@ class Stone2:
       self.delta = 0,0
       self.target = None
       self.targets = []
-      if Stone2.image == None:
-            Stone2.image = gfw.image.load('res/stone.png')
+      if FStone2.image == None:
+            FStone2.image = gfw.image.load('res/stone.png')
 
     
        

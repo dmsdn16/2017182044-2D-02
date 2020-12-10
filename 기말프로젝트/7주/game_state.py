@@ -22,9 +22,9 @@ def enter():
     gfw.world.add(gfw.layer.skell,skell)
     skell2 = Skell2()
     gfw.world.add(gfw.layer.skell,skell2)
-    stone = Stone()
+    stone = FStone()
     gfw.world.add(gfw.layer.stone,stone)
-    stone2 = Stone2()
+    stone2 = FStone2()
     gfw.world.add(gfw.layer.stone,stone2)
 
     
